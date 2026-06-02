@@ -536,14 +536,14 @@ else:
 
             tab1, tab2 = st.tabs(["🗓️ 持仓热力图", "📅 年度回报表"])
             with tab1:
-                monthly_pos = positions.resample('M').last().transpose()
+                monthly_pos = positions.resample('ME').last().transpose()
                 fig_hm = px.imshow(monthly_pos, labels=dict(x="日期", y="标的", color="状态"),
                                    color_continuous_scale=[[0, '#f2f2f2'], [1, '#d62728']], aspect="auto")
                 st.plotly_chart(fig_hm, use_container_width=True)
 
             with tab2:
-                s_yearly = res_df['Strategy'].resample('Y').last()
-                b_yearly = res_df['Benchmark'].resample('Y').last()
+                s_yearly = res_df['Strategy'].resample('YE').last()
+                b_yearly = res_df['Benchmark'].resample('YE').last()
                 years = s_yearly.index.year
                 s_rets = [s_yearly.iloc[0] / initial_capital - 1] + [s_yearly.iloc[i] / s_yearly.iloc[i - 1] - 1 for i
                                                                      in range(1, len(years))]
