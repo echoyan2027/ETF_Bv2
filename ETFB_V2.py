@@ -334,6 +334,7 @@ def run_strategy(sector_dict, benchmark_df, safe_dict, config):
         safe_ma_score = daily_safe_score.resample(config['freq']).last()
 
         safe_ma_score[safe_ma_score <= 0] = -5000
+        safe_ma_score = safe_ma_score.fillna(-10000)
 
         best_safe_asset = safe_ma_score.idxmax(axis=1)
         best_safe_max_score = safe_ma_score.max(axis=1)
