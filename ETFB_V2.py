@@ -45,7 +45,7 @@ with st.sidebar.expander("⚙️ 策略核心参数设置 (已应用最新默认
     rebalance_freq_label = st.sidebar.selectbox("调仓频率",
                                                 ["一月一调 (Month End)", "两周一调 (2-Weeks)", "一周一调 (Weekly)"],
                                                 index=0)
-    freq_map = {"一月一调 (Month End)": "M", "两周一调 (2-Weeks)": "2W-FRI", "一周一调 (Weekly)": "W-FRI"}
+    freq_map = {"一月一调 (Month End)": "ME", "两周一调 (2-Weeks)": "2W-FRI", "一周一调 (Weekly)": "W-FRI"}
     rebalance_freq = freq_map[rebalance_freq_label]
 
     top_n = st.sidebar.number_input("持仓数量", min_value=1, value=2)
